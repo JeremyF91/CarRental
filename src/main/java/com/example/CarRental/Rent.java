@@ -10,6 +10,7 @@ public class Rent {
 
     private Date endRent;
 
+
     public String getPlateNumber() {
         return plateNumber;
     }

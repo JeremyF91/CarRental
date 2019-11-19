@@ -1,7 +1,9 @@
 package com.example.CarRental;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
@@ -10,10 +12,9 @@ public class CarController {
 
     private List<Car> cars = new ArrayList<Car>();
 
-
     public CarController() {
-        cars.add(new Car("11AA22", "Ferrari", 1000));
-        cars.add(new Car("33BB44", "Porshe", 2222));
+        cars.add(new Car("11AA22", "Ferrari", 1000, true));
+        cars.add(new Car("33BB44", "Porshe", 2222, false));
 
     }
 
@@ -29,6 +30,50 @@ public class CarController {
         System.out.println(car);
         cars.add(car);
     }
+
+    @RequestMapping(value = "/cars", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<Car> getAllCars(){
+        List<Car> cars2 = new ArrayList<>();
+        for(Car car: cars){
+            if(car.isRented()){
+                cars2.add(car);
+            }
+        }
+        return cars2;
+    }
+    @RequestMapping(value = "/cars/plateNumber", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Car aCar(@PathVariable("plateNumber") String plateNumber) throws Exception{
+        for(Car car: cars){
+            if(car.getPlateNumber() == plateNumber){
+                return car;
+            }
+        }
+        throw new IOException("Car not found");
+    }
+    @RequestMapping(value = "/cars/plateNumber", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void getBack(@PathVariable("plateNumber") String plateNumber) throws Exception{
+    }
+    @RequestMapping(value = "/cars/plateNumber", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void rent(@PathVariable("plateNumber") String plateNumber) throws Exception{
+        for(Car car: cars){
+            if(car.getPlateNumber() == plateNumber){
+                car.setRented(true);
+            }
+        }
+        throw new IOException("Car not found");
+    }
+    @RequestMapping(value = "/cars/plateNumber", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void rentAndGetBack(@PathVariable("plateNumber") String plateNumber,
+                               @RequestParam(value="rent", required = true)boolean rent) throws Exception{
+    }
+
 
 
 
