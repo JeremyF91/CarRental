@@ -35,13 +35,13 @@ public class CarController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public List<Car> getAllCars(){
-        List<Car> cars2 = new ArrayList<>();
+        List<Car> newCarsListe = new ArrayList<>();
         for(Car car: cars){
             if(car.isRented()){
-                cars2.add(car);
+                newCarsListe.add(car);
             }
         }
-        return cars2;
+        return newCarsListe;
     }
     @RequestMapping(value = "/cars/plateNumber", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
@@ -52,7 +52,7 @@ public class CarController {
                 return car;
             }
         }
-        throw new IOException("Car not found");
+        throw new IOException("Car doesn't exist");
     }
     @RequestMapping(value = "/cars/plateNumber", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
@@ -66,7 +66,7 @@ public class CarController {
                 car.setRented(true);
             }
         }
-        throw new IOException("Car not found");
+        throw new IOException("Car doesn't exist");
     }
     @RequestMapping(value = "/cars/plateNumber", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
