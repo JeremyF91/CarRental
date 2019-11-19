@@ -1,6 +1,5 @@
 package com.example.CarRental;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class RentController {
 
     }
 
-/*
+
     @RequestMapping(value="/rents", method=RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public Rent getRents(){
@@ -41,7 +40,6 @@ public class RentController {
       return loc;
 
    }
-*/
 
     @RequestMapping(value = "/rents", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
@@ -54,18 +52,18 @@ public class RentController {
         return rents.get(0);
     }
 
-    @RequestMapping(value = "/cars/{plateNumber}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/rents", method = RequestMethod.PUT)
     public void rent(@PathVariable("plateNumber") String plateNumber, @RequestParam(value="rent",
             required = true)boolean rent, @RequestBody Dates dates){
     }
 
-    /*
+
     @RequestMapping(value = "/rents", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     public void rentAndGetBack(@PathVariable("plateNumber") String plateNumber,
                                @RequestParam(value="rent", required = true)boolean rent) throws Exception{
     }
-*/
+
 
 /*
     @RequestMapping(value = "/rents/plateNumber?rent=true", method = RequestMethod.PUT)
