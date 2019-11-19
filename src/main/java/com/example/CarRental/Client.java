@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.client.RestTemplate;
 
-public class CarRentalClient {
+public class Client {
 
-    private static final Logger log = LoggerFactory.getLogger(CarRentalClient.class);
+    private static final Logger log = LoggerFactory.getLogger(Client.class);
 
     public static void main(String[] args) {
 

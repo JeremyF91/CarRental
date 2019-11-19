@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
 @RestController
-public class CarRentalService {
+public class CarController {
 
     private List<Car> cars = new ArrayList<Car>();
 
 
-    public CarRentalService() {
+    public CarController() {
         cars.add(new Car("11AA22", "Ferrari", 1000));
         cars.add(new Car("33BB44", "Porshe", 2222));
 
     }
 
-    @RequestMapping(value="/cars/plateNumber", method=RequestMethod.GET)
+    @RequestMapping(value="/cars", method=RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public List<Car> getListOfCars(){
         return cars;
