@@ -15,7 +15,7 @@ public class Client {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        HttpEntity<Car> request = new HttpEntity<>(new Car("44QQ66", "Peugeot", 12, true));
+        HttpEntity<Car> request = new HttpEntity<>(new Car("44QQ66", "Peugeot", 5, 12));
         restTemplate.postForObject("http://localhost:8080/cars", request, Car.class);
 
         List cars = restTemplate.getForObject("http://localhost:8080/cars", List.class);
