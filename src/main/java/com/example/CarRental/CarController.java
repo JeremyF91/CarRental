@@ -31,6 +31,7 @@ public class CarController {
         cars.add(car);
     }
 
+    /**
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -73,7 +74,7 @@ public class CarController {
     public void rentAndGetBack(@PathVariable("plateNumber") String plateNumber,
                                @RequestParam(value="rent", required = true)boolean rent) throws Exception{
     }
-
+    **/
 
 
 

@@ -57,6 +57,7 @@ public class Car {
         if (rented == true) return true;
         else { return false;
         }
+
     }
 
     @Override
